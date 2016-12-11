@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name='mobile-web-app-capable' content='yes'>
+    <meta name='viewport' content='width=device-width'>
+    <link rel='icon' sizes='196x196' href='bunny.png'>
+	<title>Bunny Defender</title>
+    <script src="lib/phaser.js"></script>
+    <script src="Boot.js"></script>
+    <script src="Preloader.js"></script>
+    <script src="StartMenu.js"></script>    
+    <script src="Game.js"></script>
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #000000;
+		}
+	</style>
+</head>
+<body>
+<!--    div game container for Phaser to load to    -->
+    <div id='gameContainer'></div>
+    
+    
+<!--    function that loads Phaser and creates the game when the page is peing loaded. Takes width, height, somthing, and the container for Phaser to load in    -->
+    <script type='text/javascript'>
+        window.onload = ()=>{
+            var game = new Phaser.Game(540, 960, Phaser.AUTO, 'gameContainer');
+            game.state.add('Boot', BunnyDefender.Boot);
+            game.state.add('Preloader', BunnyDefender.Preloader);
+            game.state.add('StartMenu', BunnyDefender.StartMenu);
+            game.state.add('Game', BunnyDefender.Game);
+            game.state.start('Boot');
+        }
+    </script>
+</body>
+</html>
